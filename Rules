@@ -13,31 +13,58 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
-compile '/stylesheet/' do
-  # don’t filter or layout
+require 'compass'
+
+Compass.add_project_configuration '.compass/compass.rb'
+sass_options = Compass.sass_engine_options
+
+#
+# Compile section
+#
+
+compile '/assets/*/' do
+  nil
+end
+
+compile '/stylesheets/*' do
+  filter :sass, sass_options.merge(:syntax => item[:extension].to_sym)
 end
 
 compile '*' do
-  if item.binary?
-    # don’t filter binary items
-  else
     filter :erb
-    layout 'default'
-  end
+    layout item[:layout] ? item[:layout] : 'default'
 end
 
-route '/stylesheet/' do
-  '/style.css'
+#
+# Route section
+#
+
+route '/stylesheets/*/*/' do
+  nil
 end
 
-route '*' do
-  if item.binary?
-    # Write item with identifier /foo/ to /foo.ext
-    item.identifier.chop + '.' + item[:extension]
-  else
-    # Write item with identifier /foo/ to /foo/index.html
-    item.identifier + 'index.html'
-  end
+route '/stylesheets/*/' do
+  item.identifier.chop + '.css'
+end
+
+route '/assets/javascripts/*/' do
+  '/javascripts/' + File.basename(item.identifier)
+end
+
+route '/assets/fonts/*/' do
+  '/fonts/' + File.basename(item.identifier)
+end
+
+route '/assets/images/*/' do
+  '/images/' + File.basename(item.identifier)
+end
+
+route '/' do
+  '/index.html'
+end
+
+route '/*' do
+  item.identifier.chop + '.html'
 end
 
 layout '*', :erb

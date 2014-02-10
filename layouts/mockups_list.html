@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title><%= @item[:title] %></title>
+	<style type="text/css">
+
+	  * {
+	    margin: 0px;
+	    padding: 0px;
+	  }
+	
+	  body {
+	    padding: 20px;
+	    font-size: 12px;
+	    font-family: Arial;
+	  }
+	
+	  h1 {
+	    margin-bottom: 20px;
+	  }
+	
+	  ul {
+	    list-style-position: inside;
+	  }
+	
+	</style>
+  </head>
+  <body>
+  	
+  	<h1><%= @item[:title] %></h1>
+	<%= yield %>
+
+  </body>
+</html>

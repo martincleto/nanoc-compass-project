@@ -1,0 +1,21 @@
+
+:focus {
+outline: 0;
+}
+
+a {
+text-decoration: none;
+
+  &, &.hover, &:hover {
+  color: #000;
+  }
+
+}
+
+h1, h2, h3 {
+text-rendering: optimizeLegibility;
+}
+
+strong {
+font-weight: 700;
+}

@@ -1,29 +1,32 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>A Brand New nanoc Site - <%= @item[:title] %></title>
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
+    <title><%= @item[:title] %></title>    
+    <link rel="stylesheet" href="/stylesheets/styles.css">
   </head>
   <body>
-    <div id="main">
-      <%= yield %>
+  	
+  	<div id="layout">
+  	
+	  	<%= render '/partials/header' %>
+	  	
+	    <div id="main">
+	    	
+	    	<section id="content" role="main">
+	    		<%= yield %>
+	    	</section>
+	    	
+			<%= render '/partials/sidebar'  %>
+	    	
+	    </div>
+
+	    
+	    <%= render '/partials/footer' %>
+    
     </div>
-    <div id="sidebar">
-      <h2>Documentation</h2>
-      <ul>
-        <li><a href="http://nanoc.ws/docs/">Documentation</a></li>
-        <li><a href="http://nanoc.ws/docs/tutorial/">Getting Started</a></li>
-      </ul>
-      <h2>Community</h2>
-      <ul>
-        <li><a href="http://groups.google.com/group/nanoc/">Discussion Group</a></li>
-        <li><a href="irc://chat.freenode.net/#nanoc">IRC Channel</a></li>
-        <li><a href="http://github.com/nanoc/nanoc/wiki/">Wiki</a></li>
-      </ul>
-    </div>
+
+    <script src="/javascripts/global.js"></script>
+    
   </body>
 </html>
