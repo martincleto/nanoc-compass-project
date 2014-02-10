@@ -1,0 +1,8 @@
+output/*
+tmp/*
+.buildpath
+.DS_Store
+.sass-cache/*
+.settings
+.svn
+crash.log
