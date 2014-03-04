@@ -26,6 +26,11 @@ compile '/assets/*/' do
   nil
 end
 
+compile '/stylesheets/*/_*/' do
+  # Don’t compile partials
+  nil
+end
+
 compile '/stylesheets/*' do
   filter :sass, sass_options.merge(:syntax => item[:extension].to_sym)
 end

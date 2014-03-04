@@ -1,5 +1,10 @@
+html {
+font-size: 62.5%;
+-webkit-text-size-adjust: none; 
+}
 
-#layout {
-  width: 990px;
-  margin: 0 auto;
+body {
+  background-color: $test_variable;
+  @include font-family('sans-serif');
+  @include font-size(14);
 }
